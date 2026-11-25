@@ -141,12 +141,12 @@
           <p>Select a numbered point to open its image placeholder. Replace the map and area images with project visuals when available.</p>
           <div class="pavilion-map-placeholder" role="group" aria-label="Pavilion concepts map placeholder. Select a numbered marker to view its image placeholder.">
             <span class="pavilion-map-label">Pavilion location plan placeholder</span>
-            <button class="pavilion-marker" type="button" data-pavilion="1" aria-label="Open pavilion concept 1">1</button>
-            <button class="pavilion-marker" type="button" data-pavilion="2" aria-label="Open pavilion concept 2">2</button>
-            <button class="pavilion-marker" type="button" data-pavilion="3" aria-label="Open pavilion concept 3">3</button>
-            <button class="pavilion-marker" type="button" data-pavilion="4" aria-label="Open pavilion concept 4">4</button>
-            <button class="pavilion-marker" type="button" data-pavilion="5" aria-label="Open pavilion concept 5">5</button>
-            <button class="pavilion-marker" type="button" data-pavilion="6" aria-label="Open pavilion concept 6">6</button>
+            <button class="pavilion-marker" type="button" data-pavilion="1" data-area-kind="Pavilion" data-area-number="1" aria-label="Open pavilion concept 1">1</button>
+            <button class="pavilion-marker" type="button" data-pavilion="2" data-area-kind="Pavilion" data-area-number="2" aria-label="Open pavilion concept 2">2</button>
+            <button class="pavilion-marker" type="button" data-pavilion="3" data-area-kind="Pavilion" data-area-number="3" aria-label="Open pavilion concept 3">3</button>
+            <button class="pavilion-marker" type="button" data-pavilion="4" data-area-kind="Pavilion" data-area-number="4" aria-label="Open pavilion concept 4">4</button>
+            <button class="pavilion-marker" type="button" data-pavilion="5" data-area-kind="Pavilion" data-area-number="5" aria-label="Open pavilion concept 5">5</button>
+            <button class="pavilion-marker" type="button" data-pavilion="6" data-area-kind="Pavilion" data-area-number="6" aria-label="Open pavilion concept 6">6</button>
           </div>
         </div>
       </section>
@@ -155,9 +155,8 @@
         <div class="one-stop-layout">
           <div class="one-stop-intro">
             <p class="eyebrow"><span>07</span>Integrated public services</p>
-            <p class="kicker">One Stop Shop</p>
-            <h2>City services,<br /><em>all in one place.</em></h2>
-            <p>Give residents a clear, welcoming starting point for municipal transactions, information, and support—so they can find the right service without navigating the whole building.</p>
+            <h2>One Stop Shop</h2>
+            <p>A welcoming starting point for municipal transactions, information, and support—helping residents find the right service without navigating the whole building.</p>
           </div>
           <div class="service-steps">
             <article class="service-step">
@@ -173,6 +172,12 @@
               <div><h3>Wait with comfort</h3><p>Provide accessible seating, clear queue information, and helpful guidance while residents wait.</p></div>
             </article>
           </div>
+        </div>
+        <div class="one-stop-plan-placeholder" role="group" aria-label="One Stop Shop concept image placeholder. Select a numbered marker to view its image placeholder.">
+          <span class="one-stop-plan-label">One Stop Shop concept image placeholder</span>
+          <button class="pavilion-marker one-stop-marker" type="button" data-area-kind="One Stop Shop" data-area-number="1" data-one-stop-area="1" aria-label="Open One Stop Shop area 1">1</button>
+          <button class="pavilion-marker one-stop-marker" type="button" data-area-kind="One Stop Shop" data-area-number="2" data-one-stop-area="2" aria-label="Open One Stop Shop area 2">2</button>
+          <button class="pavilion-marker one-stop-marker" type="button" data-area-kind="One Stop Shop" data-area-number="3" data-one-stop-area="3" aria-label="Open One Stop Shop area 3">3</button>
         </div>
       </section>
 
@@ -306,13 +311,14 @@
 
       document.querySelectorAll(".pavilion-marker").forEach((marker) => {
         marker.addEventListener("click", () => {
-          const number = marker.dataset.pavilion;
-          pavilionDialogTitle.textContent = `Pavilion ${number}`;
-          pavilionImagePlaceholderLabel.textContent = `Pavilion ${number} image placeholder`;
-          pavilionImagePlaceholderNote.textContent = `Add the matching rendering or photo for pavilion ${number}`;
+          const areaTitle = `${marker.dataset.areaKind} ${marker.dataset.areaNumber}`;
+          const areaTitleLowercase = areaTitle.toLowerCase();
+          pavilionDialogTitle.textContent = areaTitle;
+          pavilionImagePlaceholderLabel.textContent = `${areaTitle} image placeholder`;
+          pavilionImagePlaceholderNote.textContent = `Add the matching rendering or photo for ${areaTitleLowercase}`;
           pavilionImagePlaceholder.setAttribute(
             "aria-label",
-            `Image placeholder for pavilion ${number}`,
+            `Image placeholder for ${areaTitleLowercase}`,
           );
           pavilionDialog.showModal();
         });

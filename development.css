@@ -432,6 +432,7 @@
  .framework-image-placeholder,
  .concept-plan-placeholder,
  .pavilion-map-placeholder,
+ .one-stop-plan-placeholder,
  .pavilion-image-placeholder,
  .daily-life-placeholder {
    align-items: center;
@@ -529,6 +530,58 @@
    text-transform: uppercase;
  }
 
+ .one-stop-section {
+   background: var(--ink);
+   color: var(--paper);
+   padding: 9vw 10vw;
+ }
+
+ .one-stop-layout {
+   display: grid;
+   gap: 10vw;
+   grid-template-columns: 1fr 1fr;
+   margin: 0 auto;
+   max-width: 1200px;
+ }
+
+ .one-stop-intro .eyebrow {
+   color: #b7c1b6;
+ }
+
+ .one-stop-intro h2 {
+   font-size: clamp(44px, 5vw, 70px);
+ }
+
+ .one-stop-intro > p:last-child {
+   color: #bdc5bd;
+   line-height: 1.7;
+   margin: 30px 0 0;
+   max-width: 440px;
+ }
+
+ .service-steps {
+   align-self: center;
+ }
+
+ .service-step {
+   border-top: 1px solid rgba(240, 238, 231, .28);
+   display: grid;
+   gap: 24px;
+   grid-template-columns: 30px 1fr;
+   padding: 24px 0;
+ }
+
+ .service-step h3 {
+   font-size: 24px;
+   margin: 0 0 8px;
+ }
+
+ .service-step p {
+   color: #bdc5bd;
+   line-height: 1.6;
+   margin: 0;
+ }
+
  .pavilion-section {
    background: #f0eee7;
    padding: 8vw 10vw 9vw;
@@ -565,7 +618,21 @@
    position: relative;
  }
 
- .pavilion-map-label {
+ .one-stop-plan-placeholder {
+   aspect-ratio: 16 / 7;
+   background-color: #dce0d8;
+   background-image:
+     linear-gradient(32deg, transparent 47%, rgba(141, 156, 138, .22) 48%, rgba(141, 156, 138, .22) 52%, transparent 53%),
+     linear-gradient(90deg, rgba(141, 156, 138, .18) 1px, transparent 1px),
+     linear-gradient(rgba(141, 156, 138, .18) 1px, transparent 1px);
+   background-size: auto, 64px 64px, 64px 64px;
+   margin: 42px auto 0;
+   max-width: 1200px;
+   position: relative;
+ }
+
+ .pavilion-map-label,
+ .one-stop-plan-label {
    background: rgba(240, 238, 231, .92);
    padding: 12px 16px;
  }
@@ -631,6 +698,21 @@
  .pavilion-marker[data-pavilion="6"] {
    left: 82%;
    top: 61%;
+ }
+
+ .one-stop-marker[data-one-stop-area="1"] {
+   left: 27%;
+   top: 44%;
+ }
+
+ .one-stop-marker[data-one-stop-area="2"] {
+   left: 50%;
+   top: 30%;
+ }
+
+ .one-stop-marker[data-one-stop-area="3"] {
+   left: 73%;
+   top: 58%;
  }
 
  .pavilion-dialog {
@@ -996,7 +1078,8 @@
      padding: 18vw 6vw;
    }
 
-   .pavilion-map-placeholder {
+   .pavilion-map-placeholder,
+   .one-stop-plan-placeholder {
      aspect-ratio: 4 / 3;
    }
 
